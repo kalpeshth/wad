@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Users</title>
+    <script>
+        window.onload = function () {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            if (users.length === 0) {
+                document.body.innerHTML += '<p>No users registered.</p>';
+                return;
+            }
+
+            const list = document.createElement('ul');
+
+            users.forEach(user => {
+                const item = document.createElement('li');
+                item.textContent = `Name: ${user.name}, Email: ${user.email}`;
+                list.appendChild(item);
+            });
+
+            document.body.appendChild(list);
+        };
+    </script>
+</head>
+<body>
+    <h2>Registered Users</h2>
+</body>
+</html>
